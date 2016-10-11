@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011153918) do
+ActiveRecord::Schema.define(version: 20161011155113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "html_elements", force: :cascade do |t|
+    t.integer  "page_id"
+    t.integer  "name"
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["page_id"], name: "index_html_elements_on_page_id", using: :btree
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["url"], name: "index_pages_on_url", using: :btree
+  end
 
   create_table "user_tokens", force: :cascade do |t|
     t.string   "token",      default: "", null: false

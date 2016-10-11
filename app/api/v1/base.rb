@@ -4,7 +4,7 @@ module V1
   class Base < Grape::API
     mount V1::Sessions
     mount V1::Users
-
+    mount V1::Pages
 
     add_swagger_documentation(
         api_version: "v1",
